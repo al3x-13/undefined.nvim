@@ -100,7 +100,7 @@ function M.setup(colors)
 	theme.Underlined = { underline = true }
 	theme.Ignore = { fg = colors.bg4 }
 	theme.Error = { fg = colors.warning, bg = colors.bg }
-	theme.Todo = { fg = colors.fg2, bg = colors.bg, bold = true, reverse = true }
+	theme.Todo = { fg = colors.warning2, bold = true }
 
 	-- Treesitter Syntax Groups
 	-- Comments
@@ -109,7 +109,7 @@ function M.setup(colors)
 	theme["@comment.error"] = { fg = colors.warning, bg = colors.bg }
 	theme["@comment.warning"] = { fg = colors.warning2, bg = colors.bg }
 	theme["@comment.note"] = { fg = colors.info, bg = colors.bg }
-	theme["@comment.todo"] = { fg = colors.fg2, bg = colors.bg, bold = true, reverse = true }
+	theme["@comment.todo"] = { fg = colors.warning2, bold = true }
 
 	-- Constants
 	theme["@constant"] = { fg = colors.const, bold = true }
