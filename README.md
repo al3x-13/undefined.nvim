@@ -2,7 +2,7 @@
 
 Dark colorscheme for neovim written in lua. Works with lsp, treesitter and lualine.
 
-![undefined colorscheme](undefined.png)
+![undefined colorscheme](https://raw.githubusercontent.com/al3x-13/undefined.nvim/refs/heads/main/undefined.png)
 
 __NOTE__: This was mostly vibe-coded.
 
