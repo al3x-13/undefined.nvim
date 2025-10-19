@@ -18,8 +18,8 @@ function M.setup(colors)
 	theme.FoldColumn = { fg = colors.comment, bg = colors.bg }
 	theme.SignColumn = { fg = colors.comment, bg = colors.bg }
 	theme.LineNr = { fg = colors.bg4, bg = colors.bg }
-	theme.VertSplit = { fg = colors.fg3, bg = colors.bg }
-	theme.WinSeparator = { fg = colors.fg3, bg = colors.bg }
+	theme.VertSplit = { fg = colors.bg4, bg = colors.bg }
+	theme.WinSeparator = { fg = colors.bg4, bg = colors.bg }
 	theme.Folded = { fg = colors.fg4, bg = colors.bg }
 
 	-- Statusline
