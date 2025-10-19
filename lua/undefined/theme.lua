@@ -295,7 +295,7 @@ function M.setup(colors)
 	theme.GitSignsDelete = { fg = colors.warning, bg = colors.bg }
 
 	-- Telescope
-	theme.TelescopeBorder = { fg = colors.fg3, bg = colors.bg }
+	theme.TelescopeBorder = { fg = colors.bg4, bg = colors.bg }
 	theme.TelescopeNormal = { fg = colors.fg, bg = colors.bg }
 	theme.TelescopeSelection = { bg = colors.bg2 }
 
