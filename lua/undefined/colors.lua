@@ -12,7 +12,7 @@ local colors = {
 	fg4 = "#b0bbbc",
 
 	-- Background variations
-	bg2 = "#2a2a2a",
+	bg2 = "#333333",
 	bg3 = "#3c3c3c",
 	bg4 = "#4f4f4f",
 
