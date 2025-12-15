@@ -115,4 +115,54 @@ function M.setup(opts)
 	vim.g.terminal_color_15 = colors.comment
 end
 
+-- Set variant and reload colorscheme
+function M.set_variant(variant)
+	local valid_variants = { base = true, darker = true }
+	if not valid_variants[variant] then
+		vim.notify(
+			string.format(
+				"undefined.nvim: Invalid variant '%s'. Valid options are: base, darker",
+				variant
+			),
+			vim.log.levels.ERROR
+		)
+		return
+	end
+
+	M.setup({ variant = variant, transparent_background = M.config.transparent_background })
+	vim.notify(string.format("undefined.nvim: Switched to '%s' variant", variant), vim.log.levels.INFO)
+end
+
+-- Toggle between variants
+function M.toggle_variant()
+	local current = M.config.variant
+	local new_variant = current == "base" and "darker" or "base"
+	M.set_variant(new_variant)
+end
+
+-- Create user commands
+vim.api.nvim_create_user_command("UndefinedVariant", function(opts)
+	local variant = opts.args
+	if variant == "" then
+		vim.notify(
+			string.format("Current variant: %s", M.config.variant),
+			vim.log.levels.INFO
+		)
+	else
+		M.set_variant(variant)
+	end
+end, {
+	nargs = "?",
+	complete = function()
+		return { "base", "darker" }
+	end,
+	desc = "Set undefined.nvim variant (base or darker)",
+})
+
+vim.api.nvim_create_user_command("UndefinedToggle", function()
+	M.toggle_variant()
+end, {
+	desc = "Toggle between undefined.nvim variants",
+})
+
 return M
