@@ -5,6 +5,7 @@ local M = {}
 
 -- Configuration
 M.config = {
+	variant = "base",
 	transparent_background = false,
 }
 
@@ -54,6 +55,9 @@ function M.setup(opts)
 	-- Merge user config with defaults
 	M.config = vim.tbl_deep_extend("force", M.config, opts or {})
 
+	-- Set global variable for variant (for lualine and other integrations)
+	vim.g.undefined_variant = M.config.variant
+
 	-- Reset colors
 	if vim.g.colors_name then
 		vim.cmd("highlight clear")
@@ -65,6 +69,11 @@ function M.setup(opts)
 
 	vim.o.termguicolors = true
 	vim.g.colors_name = "undefined"
+
+	-- Clear package cache to ensure fresh variant selection
+	package.loaded["undefined.colors"] = nil
+	package.loaded["undefined.colors.base"] = nil
+	package.loaded["undefined.colors.darker"] = nil
 
 	-- Load color palette
 	local colors = require("undefined.colors")
