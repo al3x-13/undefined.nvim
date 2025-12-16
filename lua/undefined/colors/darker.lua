@@ -12,7 +12,7 @@ local colors = {
 	fg4 = "#b0bbbc",
 
 	-- Background variations
-	bg2 = "#252527",
+	bg2 = "#2f2f31",
 	bg3 = "#232324",
 	bg4 = "#3e3e41",
 
@@ -48,7 +48,7 @@ local colors = {
 	struct = "#bdc8ca",     -- Neutral gray, same as type
 	annotation = "#adb6b8", -- Neutral gray
 	decorator = "#adb6b8",  -- Neutral gray
-	punctuation = "#b0bbbc", -- fg3 for delimiters
+	punctuation = "#5ce6e3", -- keyword color for delimiters
 	bracket = "#c1cdce",    -- fg2 for brackets
 	special = "#dce9ea",    -- Use adjusted fg2
 	escape = "#9f86f9",     -- Use purple like const
