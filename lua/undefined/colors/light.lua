@@ -14,7 +14,7 @@ local colors = {
 	-- Background variations
 	bg2 = "#d6d8da",
 	bg3 = "#d2d4d6",
-	bg4 = "#c5c7c9",
+	bg4 = "#b8babc",
 
 	-- Semantic colors
 	keyword = "#08aec4",
