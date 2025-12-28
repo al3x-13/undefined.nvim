@@ -26,11 +26,11 @@ local function load_colors()
 	local variant = get_variant()
 
 	-- Validate variant
-	local valid_variants = { base = true, darker = true }
+	local valid_variants = { base = true, darker = true, light = true }
 	if not valid_variants[variant] then
 		vim.notify(
 			string.format(
-				"undefined.nvim: Invalid variant '%s'. Valid options are: base, darker. Falling back to 'base'.",
+				"undefined.nvim: Invalid variant '%s'. Valid options are: base, darker, light. Falling back to 'base'.",
 				variant
 			),
 			vim.log.levels.WARN

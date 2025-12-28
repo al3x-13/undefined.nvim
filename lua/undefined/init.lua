@@ -74,6 +74,8 @@ function M.setup(opts)
 	package.loaded["undefined.colors"] = nil
 	package.loaded["undefined.colors.base"] = nil
 	package.loaded["undefined.colors.darker"] = nil
+	package.loaded["undefined.colors.light"] = nil
+	package.loaded["undefined.theme"] = nil
 
 	-- Load color palette
 	local colors = require("undefined.colors")
@@ -136,11 +138,11 @@ end
 
 -- Set variant and reload colorscheme
 function M.set_variant(variant)
-	local valid_variants = { base = true, darker = true }
+	local valid_variants = { base = true, darker = true, light = true }
 	if not valid_variants[variant] then
 		vim.notify(
 			string.format(
-				"undefined.nvim: Invalid variant '%s'. Valid options are: base, darker",
+				"undefined.nvim: Invalid variant '%s'. Valid options are: base, darker, light",
 				variant
 			),
 			vim.log.levels.ERROR
@@ -173,9 +175,9 @@ vim.api.nvim_create_user_command("UndefinedVariant", function(opts)
 end, {
 	nargs = "?",
 	complete = function()
-		return { "base", "darker" }
+		return { "base", "darker", "light" }
 	end,
-	desc = "Set undefined.nvim variant (base or darker)",
+	desc = "Set undefined.nvim variant (base, darker, or light)",
 })
 
 vim.api.nvim_create_user_command("UndefinedToggle", function()
