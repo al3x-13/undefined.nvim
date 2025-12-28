@@ -54,10 +54,19 @@ function M.setup(colors)
 	theme.VisualNOS = { bg = colors.bg2 }
 
 	-- Diff
-	theme.DiffAdd = { fg = "#fafafa", bg = "#123d0f", bold = true }
-	theme.DiffDelete = { bg = colors.bg2 }
-	theme.DiffChange = { bg = "#151b3c", fg = "#fafafa" }
-	theme.DiffText = { fg = "#ffffff", bg = "#ff0000", bold = true }
+	-- Use dynamic colors based on background brightness
+	local is_light = colors.bg > "#808080"
+	if is_light then
+		theme.DiffAdd = { fg = colors.diff_add, bg = "#d4f4dd", bold = true }
+		theme.DiffDelete = { fg = colors.diff_delete, bg = "#fecdd3" }
+		theme.DiffChange = { fg = colors.diff_change, bg = "#dbeafe" }
+		theme.DiffText = { fg = colors.diff_text, bg = "#bfdbfe", bold = true }
+	else
+		theme.DiffAdd = { fg = "#fafafa", bg = "#123d0f", bold = true }
+		theme.DiffDelete = { bg = colors.bg2 }
+		theme.DiffChange = { bg = "#151b3c", fg = "#fafafa" }
+		theme.DiffText = { fg = "#ffffff", bg = "#ff0000", bold = true }
+	end
 
 	-- Syntax highlighting
 	theme.Comment = { fg = colors.comment }
