@@ -113,6 +113,25 @@ function M.setup(opts)
 	vim.g.terminal_color_13 = colors.const
 	vim.g.terminal_color_14 = colors.fg4
 	vim.g.terminal_color_15 = colors.comment
+
+	-- Reload indent-blankline plugin if it's loaded
+	if vim.fn.exists(":IBLDisable") > 0 then
+		vim.schedule(function()
+			vim.cmd("IBLDisable")
+			vim.cmd("IBLEnable")
+		end)
+	end
+
+	-- Reload lualine if it's loaded
+	local ok, lualine = pcall(require, "lualine")
+	if ok then
+		vim.schedule(function()
+			-- Clear lualine theme cache
+			package.loaded["lualine.themes.undefined"] = nil
+			-- Reload lualine configuration
+			lualine.setup(lualine.get_config())
+		end)
+	end
 end
 
 -- Set variant and reload colorscheme
