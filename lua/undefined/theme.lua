@@ -36,7 +36,7 @@ function M.setup(colors)
 	-- Search
 	theme.IncSearch = { fg = colors.bg, bg = colors.keyword }
 	theme.Search = { underline = true }
-	theme.MatchParen = { fg = colors.keyword, bold = true, underline = true }
+	theme.MatchParen = { fg = colors.bg3, underline = true }
 
 	-- Messages and errors
 	theme.ErrorMsg = { fg = colors.warning, bg = colors.bg, bold = true }
