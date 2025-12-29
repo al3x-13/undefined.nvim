@@ -3,7 +3,7 @@
 
 local colors = {
 	-- Base colors
-	bg = "#e3e5e7",
+	bg = "#dcdee0",
 	fg = "#1a1a1c",
 
 	-- Foreground variations
@@ -12,9 +12,9 @@ local colors = {
 	fg4 = "#3a3a3c",
 
 	-- Background variations
-	bg2 = "#d6d8da",
-	bg3 = "#d2d4d6",
-	bg4 = "#b8babc",
+	bg2 = "#cfd1d3",
+	bg3 = "#cbcdcf",
+	bg4 = "#b1b3b5",
 
 	-- Semantic colors
 	keyword = "#08aec4",
