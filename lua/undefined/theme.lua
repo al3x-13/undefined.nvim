@@ -68,6 +68,17 @@ function M.setup(colors)
 		theme.DiffText = { fg = "#ffffff", bg = "#ff0000", bold = true }
 	end
 
+	-- Diff file highlight groups (used by fugitive, git diff, etc.)
+	theme.diffAdded = { fg = colors.diff_add }
+	theme.diffRemoved = { fg = colors.diff_delete }
+	theme.diffChanged = { fg = colors.diff_change }
+	theme.diffFile = { fg = colors.fg, bold = true }
+	theme.diffIndexLine = { fg = colors.comment }
+	theme.diffLine = { fg = colors.comment }
+	theme.diffSubname = { fg = colors.fg }
+	theme.diffOldFile = { fg = colors.diff_delete }
+	theme.diffNewFile = { fg = colors.diff_add }
+
 	-- Syntax highlighting
 	theme.Comment = { fg = colors.comment }
 	theme.Constant = { fg = colors.const, bold = true }
