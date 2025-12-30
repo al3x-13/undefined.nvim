@@ -64,8 +64,8 @@ local colors = {
 	code_block = "#3d4f58",
 
 	-- Diff colors
-	diff_add = "#16a34a",
-	diff_delete = "#dc2626",
+	diff_add = "#00b368",
+	diff_delete = "#e02020",
 	diff_change = "#08aec4",
 	diff_text = "#0398e2",
 
