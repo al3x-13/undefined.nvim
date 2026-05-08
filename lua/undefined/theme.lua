@@ -5,16 +5,18 @@ local M = {}
 
 function M.setup(colors)
 	local theme = {}
+	local is_light = colors.bg > "#808080"
 
 	-- Editor UI
 	theme.Normal = { fg = colors.fg, bg = colors.bg }
-	theme.NormalFloat = { fg = colors.fg, bg = colors.bg }
+	theme.NormalFloat = { fg = colors.fg, bg = colors.float_bg }
+	theme.FloatBorder = { fg = colors.float_border, bg = colors.bg }
 	theme.NormalNC = { fg = colors.fg, bg = colors.bg }
-	theme.Cursor = { fg = colors.bg, bg = colors.fg }
-	theme.CursorLine = { bg = colors.bg2 }
-	theme.CursorLineNr = { fg = colors.keyword, bg = colors.bg2, bold = true }
-	theme.CursorColumn = { bg = colors.bg2 }
-	theme.ColorColumn = { bg = colors.bg2 }
+	theme.Cursor = { fg = colors.bg, bg = colors.cursor }
+	theme.CursorLine = { bg = colors.cursorline }
+	theme.CursorLineNr = { fg = colors.func, bg = colors.bg2, bold = true }
+	theme.CursorColumn = { bg = colors.cursorline }
+	theme.ColorColumn = { bg = colors.cursorline }
 	theme.FoldColumn = { fg = colors.comment, bg = colors.bg }
 	theme.SignColumn = { fg = colors.comment, bg = colors.bg }
 	theme.LineNr = { fg = colors.bg4, bg = colors.bg }
@@ -50,12 +52,11 @@ function M.setup(colors)
 	theme.Title = { fg = colors.fg, bold = true }
 	theme.NonText = { fg = colors.bg4, bg = colors.bg }
 	theme.SpecialKey = { fg = colors.fg2, bg = colors.bg }
-	theme.Visual = { bg = colors.bg2 }
-	theme.VisualNOS = { bg = colors.bg2 }
+	theme.Visual = { bg = colors.visual }
+	theme.VisualNOS = { bg = colors.visual }
 
 	-- Diff
 	-- Use dynamic colors based on background brightness
-	local is_light = colors.bg > "#808080"
 	if is_light then
 		theme.DiffAdd = { fg = colors.diff_add, bg = "#d4f4dd", bold = true }
 		theme.DiffDelete = { fg = colors.diff_delete, bg = "#fecdd3" }

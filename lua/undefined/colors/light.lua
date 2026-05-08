@@ -5,6 +5,15 @@ local colors = {
 	-- Base colors
 	bg = "#dcdee0",
 	fg = "#1a1a1c",
+	cursor = "#1a1a1c",
+	cursorline = "#cfd1d3",
+	float_bg = "#d4d6d8",
+	float_border = "#b1b3b5",
+	visual = "#cbcdcf",
+	lualine_bg = "#d1d3d5",
+	lualine_highlight_bg = "#c6c8ca",
+	lualine_muted_fg = "#6f767a",
+	lualine_soft_fg = "#858d91",
 
 	-- Foreground variations
 	fg2 = "#252527",

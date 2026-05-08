@@ -5,6 +5,15 @@ local colors = {
 	-- Base colors
 	bg = "#1f1f22",
 	fg = "#e5f1f3",
+	cursor = "#e5f1f3",
+	cursorline = "#333333",
+	float_bg = "#2a2a2e",
+	float_border = "#4a4a52",
+	visual = "#3c3c3c",
+	lualine_bg = "#28282c",
+	lualine_highlight_bg = "#3d3d44",
+	lualine_muted_fg = "#9ea8ac",
+	lualine_soft_fg = "#7f888d",
 
 	-- Foreground variations
 	fg2 = "#d2dfe0",
@@ -18,9 +27,6 @@ local colors = {
 
 	-- Semantic colors
 	keyword = "#69ccd3",
-	-- keyword = "#37bec8", -- darker teal alternative
-	-- keyword = "#50fa7b", -- bright green alternative
-	-- keyword = "#e0e0e0", -- light gray alternative
 	builtin = "#09bbc8",
 	const = "#9f86f9",
 	comment = "#646b6d",
@@ -36,41 +42,41 @@ local colors = {
 	hint = "#18cdf2",
 
 	-- Additional semantic colors for Treesitter
-	namespace = "#bdc8ca",  -- Neutral gray like types
-	module = "#bdc8ca",     -- Neutral gray like types
-	macro = "#9f86f9",      -- Use purple like const
-	parameter = "#adb6b8",  -- Neutral gray
-	field = "#adb6b8",      -- Neutral gray
-	property = "#adb6b8",   -- Neutral gray
-	enum = "#bdc8ca",       -- Neutral gray, same as type
-	enumMember = "#c5d0d2", -- Slightly lighter gray
-	interface = "#bdc8ca",  -- Neutral gray, same as type
-	struct = "#bdc8ca",     -- Neutral gray, same as type
-	annotation = "#adb6b8", -- Neutral gray
-	decorator = "#adb6b8",  -- Neutral gray
-	punctuation = "#b0bbbc", -- fg3 for delimiters
-	bracket = "#c1cdce",    -- fg2 for brackets
-	special = "#d2dfe0",    -- Use main fg color
-	escape = "#9f86f9",     -- Use purple like const
-	regex = "#adb6b8",      -- Neutral gray
-	uri = "#18cdf2",        -- Keep string color for links
-	tag = "#24a5f5",        -- Use func color for tags
-	attribute_tag = "#adb6b8", -- Neutral gray
-	label = "#c5d4d6",      -- Use var color
+	namespace = "#bdc8ca",
+	module = "#bdc8ca",
+	macro = "#9f86f9",
+	parameter = "#adb6b8",
+	field = "#adb6b8",
+	property = "#adb6b8",
+	enum = "#bdc8ca",
+	enumMember = "#c5d0d2",
+	interface = "#bdc8ca",
+	struct = "#bdc8ca",
+	annotation = "#adb6b8",
+	decorator = "#adb6b8",
+	punctuation = "#b0bbbc",
+	bracket = "#c1cdce",
+	special = "#d2dfe0",
+	escape = "#9f86f9",
+	regex = "#adb6b8",
+	uri = "#18cdf2",
+	tag = "#24a5f5",
+	attribute_tag = "#adb6b8",
+	label = "#c5d4d6",
 
 	-- Markdown specific
-	heading = "#24a5f5",  -- keyword color
-	emphasis = "#adb6b8", -- neutral gray for italic
-	strong = "#f5f9f9",   -- func color for bold
-	link = "#18cdf2",     -- string color
-	code_inline = "#18cdf2", -- str color
-	code_block = "#adb6b8", -- neutral gray
+	heading = "#24a5f5",
+	emphasis = "#adb6b8",
+	strong = "#f5f9f9",
+	link = "#18cdf2",
+	code_inline = "#18cdf2",
+	code_block = "#adb6b8",
 
 	-- Diff colors
-	diff_add = "#a6d10a", -- warning2
-	diff_delete = "#f53250", -- warning
-	diff_change = "#09bbc8", -- builtin
-	diff_text = "#24a5f5", -- keyword
+	diff_add = "#a6d10a",
+	diff_delete = "#f53250",
+	diff_change = "#09bbc8",
+	diff_text = "#24a5f5",
 
 	-- Special colors
 	none = "NONE",

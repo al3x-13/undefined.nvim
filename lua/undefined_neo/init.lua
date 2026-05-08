@@ -1,5 +1,4 @@
--- undefined theme main module
--- This is the entry point for the undefined colorscheme
+-- undefined-neo theme main module
 
 local M = {}
 
@@ -11,13 +10,11 @@ local function setup_float_borders()
 	vim.diagnostic.config({ float = { border = border } })
 end
 
--- Configuration
 M.config = {
 	variant = "base",
 	transparent_background = false,
 }
 
--- Helper function to apply highlight groups
 local function apply_highlight(group, settings)
 	local gui = {}
 
@@ -51,22 +48,16 @@ local function apply_highlight(group, settings)
 	if #gui_attrs > 0 then
 		table.insert(gui, "gui=" .. table.concat(gui_attrs, ","))
 	elseif not settings.fg and not settings.bg and not settings.sp then
-		-- If no colors and no attributes, set to NONE
 		table.insert(gui, "gui=NONE")
 	end
 
-	local cmd = "highlight " .. group .. " " .. table.concat(gui, " ")
-	vim.cmd(cmd)
+	vim.cmd("highlight " .. group .. " " .. table.concat(gui, " "))
 end
 
 function M.setup(opts)
-	-- Merge user config with defaults
 	M.config = vim.tbl_deep_extend("force", M.config, opts or {})
+	vim.g.undefined_neo_variant = M.config.variant
 
-	-- Set global variable for variant (for lualine and other integrations)
-	vim.g.undefined_variant = M.config.variant
-
-	-- Reset colors
 	if vim.g.colors_name then
 		vim.cmd("highlight clear")
 	end
@@ -81,30 +72,24 @@ function M.setup(opts)
 		"i-ci-ve:ver25-Cursor",
 		"r-cr-o:hor20-Cursor",
 	}, ",")
-	vim.g.colors_name = "undefined"
+	vim.g.colors_name = "undefined-neo"
 
-	-- Clear package cache to ensure fresh variant selection
-	package.loaded["undefined.colors"] = nil
-	package.loaded["undefined.colors.base"] = nil
-	package.loaded["undefined.colors.darker"] = nil
-	package.loaded["undefined.colors.light"] = nil
+	package.loaded["undefined_neo.colors"] = nil
+	package.loaded["undefined_neo.colors.base"] = nil
+	package.loaded["undefined_neo.colors.darker"] = nil
+	package.loaded["undefined_neo.colors.light"] = nil
 	package.loaded["undefined.theme"] = nil
 
-	-- Load color palette
-	local colors = require("undefined.colors")
-
-	-- Load theme highlight groups
+	local colors = require("undefined_neo.colors")
 	local theme = require("undefined.theme")
 	local highlight_groups = theme.setup(colors)
 
-	-- Apply all highlight groups
 	for group, settings in pairs(highlight_groups) do
 		apply_highlight(group, settings)
 	end
 
 	setup_float_borders()
 
-	-- Make key backgrounds transparent if enabled
 	if M.config.transparent_background then
 		vim.cmd("highlight Normal guibg=NONE ctermbg=NONE")
 		vim.cmd("highlight NormalNC guibg=NONE ctermbg=NONE")
@@ -113,7 +98,6 @@ function M.setup(opts)
 		vim.cmd("highlight FoldColumn guibg=NONE ctermbg=NONE")
 	end
 
-	-- Set terminal colors
 	vim.g.terminal_color_0 = colors.bg
 	vim.g.terminal_color_1 = colors.warning
 	vim.g.terminal_color_2 = colors.keyword
@@ -131,7 +115,6 @@ function M.setup(opts)
 	vim.g.terminal_color_14 = colors.fg4
 	vim.g.terminal_color_15 = colors.comment
 
-	-- Reload indent-blankline plugin if it's loaded
 	if vim.fn.exists(":IBLDisable") > 0 then
 		vim.schedule(function()
 			vim.cmd("IBLDisable")
@@ -139,25 +122,21 @@ function M.setup(opts)
 		end)
 	end
 
-	-- Reload lualine if it's loaded
 	local ok, lualine = pcall(require, "lualine")
 	if ok then
 		vim.schedule(function()
-			-- Clear lualine theme cache
-			package.loaded["lualine.themes.undefined"] = nil
-			-- Reload lualine configuration
+			package.loaded["lualine.themes.undefined-neo"] = nil
 			lualine.setup(lualine.get_config())
 		end)
 	end
 end
 
--- Set variant and reload colorscheme
 function M.set_variant(variant)
 	local valid_variants = { base = true, darker = true, light = true }
 	if not valid_variants[variant] then
 		vim.notify(
 			string.format(
-				"undefined.nvim: Invalid variant '%s'. Valid options are: base, darker, light",
+				"undefined-neo.nvim: Invalid variant '%s'. Valid options are: base, darker, light",
 				variant
 			),
 			vim.log.levels.ERROR
@@ -166,17 +145,13 @@ function M.set_variant(variant)
 	end
 
 	M.setup({ variant = variant, transparent_background = M.config.transparent_background })
-	vim.notify(string.format("undefined.nvim: Switched to '%s' variant", variant), vim.log.levels.INFO)
+	vim.notify(string.format("undefined-neo.nvim: Switched to '%s' variant", variant), vim.log.levels.INFO)
 end
 
--- Create user commands
-vim.api.nvim_create_user_command("UndefinedVariant", function(opts)
+vim.api.nvim_create_user_command("UndefinedNeoVariant", function(opts)
 	local variant = opts.args
 	if variant == "" then
-		vim.notify(
-			string.format("Current variant: %s", M.config.variant),
-			vim.log.levels.INFO
-		)
+		vim.notify(string.format("Current undefined-neo variant: %s", M.config.variant), vim.log.levels.INFO)
 	else
 		M.set_variant(variant)
 	end
@@ -185,7 +160,7 @@ end, {
 	complete = function()
 		return { "base", "darker", "light" }
 	end,
-	desc = "Set undefined.nvim variant (base, darker, or light)",
+	desc = "Set undefined-neo variant (base, darker, or light)",
 })
 
 return M
